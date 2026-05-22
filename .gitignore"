@@ -1,0 +1,4 @@
+# Ignorar todos los archivos y carpetas
+*
+# Excepto el archivo principal
+!Menu_Principal.py
