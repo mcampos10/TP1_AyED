@@ -3,7 +3,6 @@ import sys
 import os
 
 
-
 """
 VARIABLES GLOBALES (para el reporte. Declarar en el archivo principal)
     nombre:str (nombre del último jugador del juego B)
@@ -317,20 +316,32 @@ def main():
 
         match opcion:
             case "A":
+                os.system('cls' if os.name == 'nt' else 'clear')
                 juego_mayor_menor()
+                os.system('cls' if os.name == 'nt' else 'clear')
                 
             case "B":
+                os.system('cls' if os.name == 'nt' else 'clear')
                 juego_numero_secreto()
+                os.system('cls' if os.name == 'nt' else 'clear')
                 
             case "C":
+                os.system('cls' if os.name == 'nt' else 'clear')
                 juego_blackjack()
+                os.system('cls' if os.name == 'nt' else 'clear')
                 
             case "D":
+                os.system('cls' if os.name == 'nt' else 'clear')
                 juegoDados()
+                os.system('cls' if os.name == 'nt' else 'clear')
                 
             case "E":
+                os.system('cls' if os.name == 'nt' else 'clear')
                 reporte()
+                os.system('cls' if os.name == 'nt' else 'clear')
+                
             case "S":
+                os.system('cls' if os.name == 'nt' else 'clear')
                 print('\n\nGracias por jugar, no apueste y juega por diversión! Hasta la próxima!')
                 input("\nPresione la tecla 'Enter' para salir...")
                 os.system('cls' if os.name == 'nt' else 'clear')
@@ -354,6 +365,8 @@ def mostrar_advertencia():
     print(cartel)
     input("\nPresione la tecla 'Enter' para continuar...")
     os.system('cls' if os.name == 'nt' else 'clear')
+    
+    
 
 mostrar_advertencia()
 main()
