@@ -194,18 +194,18 @@ def juego_dados():
 # ─────────────────────────────────────
 # Nombre del módulo: Juego Dados
 # Variables:
-#   juego_activo : bool
-#   tipo_de_apuesta: str
-#   opcion_usuario : str
-#   dado1: int
-#   dado2: int
-#   suma_dados: int
-#   paridad: str
+#   juego_activo : bool (booleano para el bucle principal)
+#   tipo_de_apuesta: str (elección del usuario si es par o impar)
+#   opcion_usuario : str (opción de seguir jugando o salir)
+#   dado1: int (número aleatorio del dado 1)
+#   dado2: int (número aleatorio del dado 1)
+#   suma_dados: int (suma de los dados)
+#   paridad: str (resultado de la suma de dados si es par o impar)
 #---Variables globales reporte---
-#   nombre_jugador_dados: str
-#   veces_jugado_dados: int
-#   veces_ganado_dados: int
-#   veces_perdido_dados: int
+#   nombre_jugador_dados: str (nombre del jugador)
+#   veces_jugado_dados: int (cantidad de veces jugado, solo cuenta al iniciar)
+#   veces_ganado_dados: int (veces que el usuario acierta si es par o impar)
+#   veces_perdido_dados: int (veces que el usuario no acierta)
 # ─────────────────────────────────────
 
     global nombre_jugador_dados
@@ -224,13 +224,17 @@ def juego_dados():
     print ("  ♠ Juego: Dados ♠")
     print ("  Adiviná si la suma de los dados será par o impar\n")
     print("================================================\n")
+    # Al iniciar suma a la variable glocal para el reporte
     veces_jugado_dados = veces_jugado_dados + 1
+    # Pido y valido el nombre
     nombre_jugador_dados = input("Escribe tu nombre: ")
     while nombre_jugador_dados == "":
         print("\n  ✗ Nombre vacío: Por favor escribe tu nombre\n")
         nombre_jugador_dados = input("Escribe tu nombre: ")
     print(f"\n| Bienvenido, {nombre_jugador_dados} ♠          |")
+    # Bucle principal
     while juego_activo:
+        # Pido y valido el tipo de juego del usuario
         tipo_de_apuesta = input("\nApuestas por: 1) Par | 2) Impar\n> ")
         while tipo_de_apuesta != "1" and tipo_de_apuesta != "2":
             print("\n  ✗ Opción inválida. Ingresá 1 para Par o 2 para Impar.\n")
@@ -239,9 +243,11 @@ def juego_dados():
             print("\nApostaste por Par ✓\n")
         else:
             print("\nApostaste por Impar ✓\n")
+        # Se generan los numeros aleatorios para los dados
         dado1 = random.randint(1,6)
         dado2 = random.randint(1,6)
         suma_dados = dado1 + dado2
+        # Validamos si el resto es 0 es par
         if suma_dados % 2 == 0:
             paridad = "Par"
         else:
@@ -253,16 +259,20 @@ def juego_dados():
         else: 
             print(f"  Resultado: {suma_dados}  →  IMPAR ♠")
         print("  ─────────────────")
+        # Valido casos ganadores
         if (paridad == "Par" and tipo_de_apuesta == "1") or (paridad == "Impar" and tipo_de_apuesta == "2"):
+            # Se suma a la variable global para el reporte
             veces_ganado_dados = veces_ganado_dados + 1
             print(f"Ganaste ✓\n")
         else:
+            # Se suma a la variable global para el reporte
             veces_perdido_dados = veces_perdido_dados + 1
             print(f"\nPerdiste ✗\n")
         print("\n|----------------------------|+")
         print(f"\n|      Ganados: {veces_ganado_dados}")
         print(f"\n|      Perdidos: {veces_perdido_dados}")
         print("\n|----------------------------+|")
+        # Valido la opción del usuario para seguir jugando o salir
         opcion_usuario = (input("\nElige una opción: 1) Seguir jugando 2) Salir \n> "))
         while opcion_usuario != "1" and opcion_usuario != "2":
             print("\n✗ Opción inválida. Presiona tecla 1 para jugar o tecla 2 para salir.\n")
@@ -273,6 +283,7 @@ def juego_dados():
             print("|   ♠  G A M E  O V E R  ♠   |")
             print("|                            |")
             print("+----------------------------+")
+            # Al ser False finaliza el bucle principal
             juego_activo = False
             print("\nSaliendo al menú principal...")
             
